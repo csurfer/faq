@@ -31,7 +31,15 @@ app.controller("MyC", function($scope, client) {
     }, function (error, response) {
       if (!error) {
         $scope.searchResult = response.hits.hits;
+        if ($scope.searchResult.length == 0) {
+          $scope.successfulSearch = 1;
+        }
+      } else {
+        $scope.successfulSearch = 2;
+        console.log("Failed to search " + query);
+        console.log(error);
       }
+      $scope.query = null;
     });
   }
 
@@ -45,8 +53,15 @@ app.controller("MyC", function($scope, client) {
       }
     }, function (error, response) {
       if (!error) {
+        $scope.successfulSubmit = 1;
         console.log("Success !!!");
+      } else {
+        $scope.successfulSubmit = 2;
+        console.log("Failed to submit " + title + " " + details);
+        console.log(error);
       }
+      $scope.title = null;
+      $scope.details = null;
     });
   }
 });

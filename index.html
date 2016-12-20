@@ -25,7 +25,14 @@
           </ul>
 
           <div class="tab-content">
-            <div ng-show="tab === 1">
+            <div ng-show="tab === 1" ng-init="successfulSearch === 0">
+              <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 1">
+                <strong>Sorry!</strong> We have no information regarding it. May be you can provide some!
+              </div>
+              <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 2">
+                <strong>Oh snap!</strong> Something went wrong.
+              </div>
+
               <form ng-submit="search(query)">
                 <input
                   type="text"
@@ -34,13 +41,25 @@
                   placeholder="Type your search query here...">
               </form>
 
-              <div ng-repeat="obj in searchResult">
-                {{ obj._source.title }} :: {{ obj._source.details }}
+              <div ng-show="searchResult !== null" ng-repeat="obj in searchResult">
+                <section>
+                  <h3>{{ obj._source.title }}</h3>
+                  <textarea class="form-control" readonly>
+                    {{ obj._source.details }}
+                  </textarea>
+                </section>
               </div>
 
             </div>
 
-            <div ng-show="tab === 2">
+            <div ng-show="tab === 2" ng-init="successfulSubmit === 0">
+              <div class="alert alert-success" role="alert" ng-show="successfulSubmit === 1">
+                <strong>Thanks!</strong> Your information is successfully submitted.
+              </div>
+              <div class="alert alert-danger" role="alert" ng-show="successfulSubmit === 2">
+                <strong>Oh snap!</strong> We couldn't submit the information provided.
+              </div>
+
               <form name="myform">
                 <div class="form-group">
                   <input type="text" class="form-control" ng-model="title" placeholder="Title..." required />
