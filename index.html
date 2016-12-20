@@ -33,6 +33,11 @@
                   ng-model="query"
                   placeholder="Type your search query here...">
               </form>
+
+              <div ng-repeat="obj in searchResult">
+                {{ obj._source.title }} :: {{ obj._source.details }}
+              </div>
+
             </div>
 
             <div ng-show="tab === 2">

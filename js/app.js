@@ -13,6 +13,8 @@ app.service('client', function (esFactory) {
 
 app.controller("MyC", function($scope, client) {
 
+  $scope.searchResult = [];
+
   $scope.search = function (query) {
     var query = {
       match: {
@@ -25,6 +27,10 @@ app.controller("MyC", function($scope, client) {
       type: 'faq',
       body: {
         query: query
+      }
+    }, function (error, response) {
+      if (!error) {
+        $scope.searchResult = response.hits.hits;
       }
     });
   }
