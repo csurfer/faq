@@ -29,9 +29,10 @@ app.controller("MyC", function($scope, client) {
         query: query
       }
     }, function (error, response) {
+      $scope.successfulSearch = 0;
       if (!error) {
         $scope.searchResult = response.hits.hits;
-        if ($scope.searchResult.length == 0) {
+        if ($scope.searchResult.length === 0) {
           $scope.successfulSearch = 1;
         }
       } else {
@@ -52,6 +53,7 @@ app.controller("MyC", function($scope, client) {
         details: details,
       }
     }, function (error, response) {
+      $scope.successfulSubmit = 0;
       if (!error) {
         $scope.successfulSubmit = 1;
         console.log("Success !!!");
