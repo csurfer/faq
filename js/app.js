@@ -11,7 +11,7 @@ app.service('client', function (esFactory) {
   });
 });
 
-app.controller("MyC", function($scope, client) {
+app.controller("MyC", function($scope, $sce, client) {
 
   $scope.searchResult = [];
 
@@ -32,6 +32,9 @@ app.controller("MyC", function($scope, client) {
       $scope.successfulSearch = 0;
       if (!error) {
         $scope.searchResult = response.hits.hits;
+        $scope.searchResult.forEach(function (element) {
+          element._source.details = $sce.trustAsHtml(markdown.toHTML(element._source.details));
+        });
         if ($scope.searchResult.length === 0) {
           $scope.successfulSearch = 1;
         }
