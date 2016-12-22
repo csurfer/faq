@@ -1,91 +1,83 @@
 <!DOCTYPE html>
 <html ng-app="faqEngine">
-  <head>
+
+<head>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="node_modules/elasticsearch-browser/elasticsearch.angular.min.js"></script>
+    <script type="text/javascript"
+      src="node_modules/elasticsearch-browser/elasticsearch.angular.min.js"></script>
     <script type="text/javascript" src="node_modules/markdown/lib/markdown.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="icon" href="img/android-search.png" type="image/png">
     <title>FAQ</title>
-  </head>
-  <body ng-controller="MyC as store">
+</head>
+
+<body ng-controller="MyC as store">
     <div class="container">
-      <!-- Heading -->
-      <div class="jumbotron">
-          <h2 class="display-3">FAQ Search</h2>
-          <p class="lead">Lorem Ipsum</p>
-      </div>
-
-      <!-- Navigation Tabs -->
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-pills nav-justified" ng-init="tab = 1">
-            <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">FAQ Search</a></li>
-            <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">Input</a></li>
-          </ul>
-
-          <div class="tab-content">
-            <div ng-show="tab === 1" ng-init="successfulSearch === 0">
-              <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 1">
-                <strong>Sorry!</strong> We have no information regarding it. May be you can provide some!
-              </div>
-              <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 2">
-                <strong>Oh snap!</strong> Something went wrong.
-              </div>
-
-              <form ng-submit="search(query)">
-                <input
-                  type="text"
-                  class="form-control"
-                  ng-model="query"
-                  placeholder="Type your search query here...">
-              </form>
-
-              <div ng-show="searchResult !== null" ng-repeat="obj in searchResult">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">{{ obj._source.title }}</h3>
-                  </div>
-                  <div class="panel-body" ng-bind-html="obj._source.details">
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div ng-show="tab === 2" ng-init="successfulSubmit === 0">
-              <div class="alert alert-success" role="alert" ng-show="successfulSubmit === 1">
-                <strong>Thanks!</strong> Your information is successfully submitted.
-              </div>
-              <div class="alert alert-danger" role="alert" ng-show="successfulSubmit === 2">
-                <strong>Oh snap!</strong> We couldn't submit the information provided.
-              </div>
-
-              <form name="myform">
-                <div class="form-group">
-                  <input type="text" class="form-control" ng-model="title" placeholder="Title..." required />
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" rows="10" ng-model="details" placeholder="Content..." required>
-                  </textarea>
-                </div>
-                <input type="submit"
-                  class="btn btn-success col-md-6"
-                  ng-click="submit(title, details)"
-                  ng-disabled="myform.$invalid"
-                  value="Submit" />
-                <input type="button"
-                  class="btn btn-danger col-md-6"
-                  ng-click="title = null; details = null"
-                  value="Clear" />
-              </form>
-            </div>
-          </div>
+        <!-- Heading -->
+        <div class="jumbotron">
+            <h2 class="display-3">FAQ Search</h2>
+            <p class="lead">Lorem Ipsum</p>
         </div>
-      </div>
-
+        <!-- Navigation Tabs -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-justified" ng-init="tab = 1">
+                    <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">FAQ Search</a></li>
+                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">Input</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div ng-show="tab === 1" ng-init="successfulSearch === 0">
+                        <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 1">
+                            <strong>Sorry!</strong> We have no information regarding it. May be you can provide some!
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 2">
+                            <strong>Oh snap!</strong> Something went wrong.
+                        </div>
+                        <form ng-submit="search(query)">
+                            <input type="text" class="form-control" ng-model="query"
+                              placeholder="Type your search query here...">
+                        </form>
+                        <div ng-show="searchResult !== null" ng-repeat="obj in searchResult">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{{ obj._source.title }}</h3>
+                                </div>
+                                <div class="panel-body" ng-bind-html="obj._source.details">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="tab === 2" ng-init="successfulSubmit === 0">
+                        <div class="alert alert-success" role="alert"
+                          ng-show="successfulSubmit === 1">
+                            <strong>Thanks!</strong> Your information is successfully submitted.
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-show="successfulSubmit === 2">
+                            <strong>Oh snap!</strong> We couldn't submit the information provided.
+                        </div>
+                        <form name="myform">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="title"
+                                  placeholder="Title..." required />
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="10" ng-model="details"
+                                  placeholder="Content..." required>
+                                </textarea>
+                            </div>
+                            <input type="submit" class="btn btn-success col-md-6"
+                              ng-click="submit(title, details)" ng-disabled="myform.$invalid"
+                              value="Submit" />
+                            <input type="button" class="btn btn-danger col-md-6"
+                              ng-click="title = null; details = null" value="Clear" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
