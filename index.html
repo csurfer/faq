@@ -118,15 +118,15 @@
                       </div>
                       <div class="form-group">
                         <textarea class="form-control" ng-model="details"
-                          placeholder="Content..." rows="10" required>
+                          placeholder="Details... (Markdown supported)" rows="10" required>
                         </textarea>
                       </div>
                       <div class="form-group">
+                        <input type="button" class="btn btn-danger col-md-6"
+                          ng-click="title = undefined; details = undefined" value="Clear" />
                         <input type="submit" class="btn btn-success col-md-6"
                           ng-click="submit(title, details)" ng-disabled="myform.$invalid"
                           value="Submit" />
-                        <input type="button" class="btn btn-danger col-md-6"
-                          ng-click="title = undefined; details = undefined" value="Clear" />
                       </div>
                     </form>
                   </div>
@@ -149,19 +149,34 @@
             <!-- Information about Search tab. -->
             <div class="panel panel-info">
               <div class="panel-heading">
-                <h3 class="panel-title">Search</h3>
+                <h3 class="panel-title">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  Search
+                </h3>
               </div>
               <div class="panel-body">
-                Search Body
+                <ul>
+                  <li>Type query words into the search bar to find relevant results.</li>
+                  <li>You can key in multiple words either separated by <b>space</b> or <b>+</b> characters.
+                  </li>
+                </ul>
               </div>
             </div>
             <!-- Information about Input tab. -->
             <div class="panel panel-info">
               <div class="panel-heading">
-                <h3 class="panel-title">Input</h3>
+                <h3 class="panel-title">
+                  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                  Input
+                </h3>
               </div>
               <div class="panel-body">
-                Input Body
+                <ul>
+                  <li>Provide <b>Title</b> and <b>Details</b> of the FAQ article you want to include. Without these you wont be able to submit your article.</li>
+                  <li>Details section has <b>Markdown support</b>. So, use it to make the article reader friendly.
+                  <a href="https://guides.github.com/features/mastering-markdown/">Here</a> is a neat little guide to know what it is.</li>
+                  <li>You can click on the <b>Preview page</b> to see how your article looks like when markdown is rendered.</li>
+                </ul>
               </div>
             </div>
           </div>
