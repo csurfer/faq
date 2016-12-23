@@ -68,4 +68,10 @@ app.controller("MyC", function($scope, $sce, client) {
             $scope.details = null;
         });
     }
+
+    $scope.$watch('t', function (newValue) {
+        if (newValue === 2) {
+          document.getElementById("preview").innerHTML = markdown.toHTML($scope.details);
+        }
+    });
 });

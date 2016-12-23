@@ -23,12 +23,28 @@
         <!-- Navigation Tabs -->
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav nav-pills nav-justified" ng-init="tab = 1">
-                    <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">FAQ Search</a></li>
-                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">Input</a></li>
+                <ul class="nav nav-pills nav-justified nav-inverse" ng-init="tab = 1">
+                    <li ng-class="{ active:tab === 1 }">
+                      <a href ng-click="tab = 1">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        Search
+                      </a>
+                    </li>
+                    <li ng-class="{ active:tab === 2 }">
+                      <a href ng-click="tab = 2">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        Input
+                      </a>
+                    </li>
+                    <li ng-class="{ active:tab === 3 }">
+                      <a href ng-click="tab = 3">
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                        Help
+                      </a>
+                    </li>
                 </ul>
                 <div class="tab-content">
-                    <div ng-show="tab === 1" ng-init="successfulSearch === 0">
+                    <div ng-show="tab === 1" ng-init="successfulSearch = 0">
                         <div class="alert alert-danger" role="alert" ng-show="successfulSearch === 1">
                             <strong>Sorry!</strong> We have no information regarding it. May be you can provide some!
                         </div>
@@ -49,30 +65,84 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-show="tab === 2" ng-init="successfulSubmit === 0">
+                    <div ng-show="tab === 2" ng-init="successfulSubmit=0; t=1">
                         <div class="alert alert-success" role="alert"
                           ng-show="successfulSubmit === 1">
                             <strong>Thanks!</strong> Your information is successfully submitted.
                         </div>
-                        <div class="alert alert-danger" role="alert" ng-show="successfulSubmit === 2">
+                        <div class="alert alert-danger" role="alert" 
+                          ng-show="successfulSubmit === 2">
                             <strong>Oh snap!</strong> We couldn't submit the information provided.
                         </div>
-                        <form name="myform">
-                            <div class="form-group">
-                                <input type="text" class="form-control" ng-model="title"
-                                  placeholder="Title..." required />
+                        <div class="row">
+                          <div class="col-md-12">
+                            <ul class="nav nav-tabs nav-justified nav-inverse" ng-init="t = 1">
+                              <li ng-class="{ active:t === 1 }">
+                                <a href ng-click="t = 1">
+                                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                  Details
+                                </a>
+                              </li>
+                              <li ng-class="{ active:t === 2 }">
+                                <a href ng-click="t = 2">
+                                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true">
+                                  </span>
+                                  Preview
+                                </a>
+                              </li>
+                            </ul>
+                            <div class="tab-content">
+                              <div ng-show="t === 1">
+                                <form name="myform">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="title"
+                                      placeholder="Title..." required />
+                                  </div>
+                                  <div class="form-group">
+                                    <textarea class="form-control" ng-model="details"
+                                      placeholder="Content..."
+                                      rows="10"
+                                      required>
+                                    </textarea>
+                                  </div>
+                                  <div class="form-group pull-right">
+                                    <input type="submit" class="btn btn-success"
+                                      ng-click="submit(title, details)" ng-disabled="myform.$invalid"
+                                      value="Submit" />
+                                    <input type="button" class="btn btn-danger"
+                                      ng-click="title = null; details = null" value="Clear" />
+                                  </div>
+                                </form>
+                              </div>
+                              <div ng-show="t === 2">
+                                <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title">{{ title }}</h3>
+                                  </div>
+                                  <div class="panel-body" id="preview"></div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="10" ng-model="details"
-                                  placeholder="Content..." required>
-                                </textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div ng-show="tab === 3">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Search</h3>
                             </div>
-                            <input type="submit" class="btn btn-success col-md-6"
-                              ng-click="submit(title, details)" ng-disabled="myform.$invalid"
-                              value="Submit" />
-                            <input type="button" class="btn btn-danger col-md-6"
-                              ng-click="title = null; details = null" value="Clear" />
-                        </form>
+                            <div class="panel-body">
+                                Search Body
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Input</h3>
+                            </div>
+                            <div class="panel-body">
+                                Input Body
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
