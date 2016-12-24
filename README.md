@@ -36,8 +36,8 @@ npm start
 
 ## Using the app
 
-![app-navigation](img/1.png)
+![app-navigation](img/s1.png)
 
-![search](img/2.png)
+![search](img/s2.png)
 
-![new-article](img/3.img)
+![new-article](img/s3.img)
