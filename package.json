@@ -1,12 +1,21 @@
 {
   "name": "faq",
   "version": "1.0.0",
-  "description": "FAQ",
-  "main": "index.js",
+  "description": "Minimalistic search app for FAQs with Markdown support built on Elasticsearch using Nodejs, Angularjs and Bootstrap.",
+  "main": "js/app.js",
   "scripts": {
     "start": "./node_modules/http-server/bin/http-server"
   },
-  "author": "Vishwas B Sharma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csurfer/faq.git"
+  },
+  "keywords": [
+    "faq",
+    "search",
+    "markdown"
+  ],
+  "author": "Vishwas B Sharma <sharma.vishwas88@gmail.com> (https://csurfer.github.io/)",
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.0-rc.2",
