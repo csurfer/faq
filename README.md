@@ -5,10 +5,10 @@
 Minimalistic search app for Frequently Asked Questions with Markdown support built on [Elasticsearch](https://www.elastic.co/) using [Nodejs](https://nodejs.org/en/), [Angularjs](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com/).
 
 ## Features
-* Out of the box working.
-* :star: Markdown :star:
-* Highly responsive.
-* Mobile frienly.
+:star: Out of the box working.
+:star: Markdown fully supported.
+:star: Highly responsive.
+:star: Mobile friendly.
 
 ## Installation pre-requisites
 
