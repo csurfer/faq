@@ -6,8 +6,11 @@ Minimalistic search app for Frequently Asked Questions with Markdown support bui
 
 ## Features
 :star: Out of the box working.
+
 :star: Markdown fully supported.
+
 :star: Highly responsive.
+
 :star: Mobile friendly.
 
 ## Installation pre-requisites
