@@ -40,4 +40,4 @@ npm start
 
 ![search](img/s2.png)
 
-![new-article](img/s3.img)
+![new-article](img/s3.png)
