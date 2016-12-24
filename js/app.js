@@ -10,7 +10,7 @@ app.service('client', function(esFactory) {
   });
 });
 
-app.controller("MyC", function($scope, $sce, client) {
+app.controller("FAQController", function($scope, $sce, client) {
 
   $scope.searchResult = [];
 

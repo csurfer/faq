@@ -1,1 +1,2 @@
+# Dont push node modules.
 node_modules/*
