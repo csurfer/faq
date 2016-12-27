@@ -4,7 +4,7 @@ var app = angular.module('faqEngine', ['elasticsearch'], ['$locationProvider', f
 
 app.service('client', function(esFactory) {
   return esFactory({
-    host: 'localhost:9200',
+    host: location.hostname + ':9200',
     apiVersion: '2.3',
     log: 'trace'
   });
