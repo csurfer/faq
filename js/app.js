@@ -15,9 +15,9 @@ app.controller("FAQController", function($scope, $sce, client) {
   $scope.searchResult = [];
 
   $scope.search = function(query) {
-    var query = {
-      match: {
-        _all: query
+    var structured_query = {
+      query_string: {
+        query: query
       }
     };
 
@@ -25,7 +25,7 @@ app.controller("FAQController", function($scope, $sce, client) {
       index: 'faqs',
       type: 'faq',
       body: {
-        query: query
+        query: structured_query
       }
     }, function(error, response) {
       $scope.successfulSearch = 0;
