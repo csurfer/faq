@@ -17,6 +17,10 @@ Minimalistic search app for Frequently Asked Questions with Markdown support bui
 
 * Ensure you have `npm` installed.
 * Download `zip` of elasticsearch binary [here](https://www.elastic.co/downloads/elasticsearch) and unzip it. Tested on (5.0.2, 5.1.1).
+```bash
+# You can use this command to fetch the zip.
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.zip
+```
 * Enable CORS calls by adding __[Note: Be careful with the network configuration!]__
 ```bash
 network.host: <ip_where_elasticsearch_is_running>
