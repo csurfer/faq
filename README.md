@@ -23,7 +23,9 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.zi
 ```
 * Enable CORS calls by adding __[Note: Be careful with the network configuration!]__
 ```bash
-network.host: <ip_where_elasticsearch_is_running>
+# IP of the host where Elasticsearch is running.
+network.host: 1.2.3.4
+
 # Following allows calls from localhost.
 # Change the regex to suit your needs.
 http.cors:
