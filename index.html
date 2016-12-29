@@ -65,15 +65,34 @@
             </div>
             <!-- Search input box. -->
             <form ng-submit="search(query)">
-              <input type="text" class="form-control" ng-model="query"
-                placeholder="Type your search query here...">
+              <div class="input-group">
+                <input type="text" class="form-control" ng-model="query"
+                  placeholder="Type your search query here...">
+                <span class="input-group-btn" ng-init="button_mode = 'safe'">
+                  <input class="btn btn-success" type="button"
+                    ng-click="button_mode = 'unsafe'"
+                    ng-show="button_mode === 'safe'" value="Safe Mode">
+                  <input class="btn btn-danger" type="button"
+                    ng-click="button_mode = 'safe'"
+                    ng-show="button_mode === 'unsafe'" value="Unsafe Mode">
+                </span>
+              </div>
             </form>
             <!-- Div to output search results in. -->
             <div class="panel-group" ng-show="searchResult !== null"
               ng-repeat="obj in searchResult">
-              <div class="panel panel-default">
+              <div class="panel panel-default" ng-show="!showDiv">
                 <div class="panel-heading">
-                  <h3 class="panel-title">{{ obj._source.title }}</h3>
+                  <h3 class="panel-title pull-left">{{ obj._source.title }}</h3>
+                  <input type="button"
+                          class="btn btn-danger pull-right"
+                          ng-click="delete(obj._id);showDiv = !showDiv"
+                          ng-show="button_mode === 'unsafe'"
+                          value="Delete from DB"
+                          data-toggle="tooltip"
+                          title="Deletion is irriversible!"
+                          onmouseenter="$(this).tooltip('show')">
+                  <div class="clearfix"></div>
                 </div>
                 <div class="panel-body" ng-bind-html="obj._source.details">
                 </div>

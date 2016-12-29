@@ -1,6 +1,11 @@
-var app = angular.module('faqEngine', ['elasticsearch'], ['$locationProvider', function($locationProvider) {
-  $locationProvider.html5Mode(true);
-}]);
+var app = angular.module('faqEngine', ['elasticsearch']);
+
+app.config(function($locationProvider) {
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+});
 
 app.service('client', function(esFactory) {
   return esFactory({
@@ -65,6 +70,18 @@ app.controller("FAQController", function($scope, $sce, client) {
       }
       $scope.title = null;
       $scope.details = null;
+    });
+  }
+
+  $scope.delete = function(id, el) {
+    client.delete({
+      index: 'faqs',
+      type: 'faq',
+      id: id
+    }, function(error, response) {
+      if (error) {
+        console.log(error);
+      }
     });
   }
 
