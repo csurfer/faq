@@ -33,17 +33,17 @@ app.controller("FAQController", function($scope, $sce, client) {
         query: structured_query
       }
     }, function(error, response) {
-      $scope.successfulSearch = 0;
+      $scope.searchStatus = 'unknown';
       if (!error) {
         $scope.searchResult = response.hits.hits;
         $scope.searchResult.forEach(function(element) {
           element._source.details = $sce.trustAsHtml(markdown.toHTML(element._source.details));
         });
         if ($scope.searchResult.length === 0) {
-          $scope.successfulSearch = 1;
+          $scope.searchStatus = 'success';
         }
       } else {
-        $scope.successfulSearch = 2;
+        $scope.searchStatus = 'failure';
         console.log("Failed to search " + query);
         console.log(error);
       }
@@ -60,11 +60,11 @@ app.controller("FAQController", function($scope, $sce, client) {
         details: details,
       }
     }, function(error, response) {
-      $scope.successfulSubmit = 0;
+      $scope.submitStatus = 'unknown';
       if (!error) {
-        $scope.successfulSubmit = 1;
+        $scope.submitStatus = 'success';
       } else {
-        $scope.successfulSubmit = 2;
+        $scope.submitStatus = 'failure';
         console.log("Failed to submit " + title + " " + details);
         console.log(error);
       }
@@ -86,7 +86,7 @@ app.controller("FAQController", function($scope, $sce, client) {
   }
 
   $scope.$watch('input_tab', function(newValue) {
-    if (newValue === 2) {
+    if (newValue === 'preview') {
       if ($scope.details !== undefined) {
         document.getElementById("preview").innerHTML = markdown.toHTML($scope.details);
       } else {
