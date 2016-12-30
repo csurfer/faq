@@ -57,3 +57,7 @@ npm start
 ![search](img/s2.png)
 
 ![new-article](img/s3.png)
+
+## Editing or Curation using admin mode
+
+![curation](img/s4.png)
