@@ -55,12 +55,19 @@
         <div class="tab-content">
 
           <!-- Search tab. -->
-          <div ng-show="app_tab === 'search'" ng-init="searchStatus = 'unknown'">
+          <div ng-show="app_tab === 'search'"
+            ng-init="searchStatus = 'unknown';deleteStatus = 'unknown';">
             <!-- Alert headers. -->
             <div class="alert alert-danger" role="alert" ng-show="searchStatus === 'success'">
               <strong>Sorry!</strong> We have no information regarding it. May be you can provide some!
             </div>
             <div class="alert alert-danger" role="alert" ng-show="searchStatus === 'failure'">
+              <strong>Oh snap!</strong> Something went wrong.
+            </div>
+            <div class="alert alert-success" role="alert" ng-show="deleteStatus === 'success'">
+              Successfully deleted the article.
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="deleteStatus === 'failure'">
               <strong>Oh snap!</strong> Something went wrong.
             </div>
             <!-- Search input box. -->
@@ -140,7 +147,7 @@
                       </div>
                       <div class="form-group">
                         <input type="button" class="btn btn-danger col-md-6"
-                          ng-click="title = undefined; details = undefined" value="Clear" />
+                          ng-click="clear()" value="Clear" />
                         <input type="submit" class="btn btn-success col-md-6"
                           ng-click="submit(title, details)" ng-disabled="myform.$invalid"
                           value="Submit" />
