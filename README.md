@@ -4,7 +4,7 @@
 
 Minimalistic search app for Frequently Asked Questions with Markdown support built on [Elasticsearch](https://www.elastic.co/) using [Nodejs](https://nodejs.org/en/), [Angularjs](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com/).
 
-## Features
+# Features
 :star: Out of the box working.
 
 :star: Markdown fully supported.
@@ -13,7 +13,7 @@ Minimalistic search app for Frequently Asked Questions with Markdown support bui
 
 :star: Mobile friendly.
 
-## Installation pre-requisites
+# Installation pre-requisites
 
 * Ensure you have `npm` installed.
 * Download `zip` of elasticsearch binary [here](https://www.elastic.co/downloads/elasticsearch) and unzip it. Tested on (5.0.2, 5.1.1).
@@ -34,7 +34,7 @@ http.cors:
 ```
 to `elasticsearch/config/elasticsearch.yml`.
 
-## Installation
+# Installation
 
 ```bash
 # Clone the repository.
@@ -50,14 +50,16 @@ npm install
 npm start
 ```
 
-## Using the app
+# Using the app
 
+## App Navigation
 ![app-navigation](img/s1.png)
 
+## Search
 ![search](img/s2.png)
 
+## Creating new article
 ![new-article](img/s3.png)
 
 ## Editing or Curation using admin mode
-
 ![curation](img/s4.png)
